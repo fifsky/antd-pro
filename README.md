@@ -1,6 +1,7 @@
-# Ant Design Pro
+# Ant Design Pro Template
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+这是一个基于ant design pro v5修改的模板，调整了一些接口的调用方式，屏蔽了一些不必要的细节，更专注功能开发
+
 
 ## Environment Prepare
 
