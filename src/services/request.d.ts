@@ -22,12 +22,6 @@ declare namespace request {
     progress: number;
   };
 
-  export type TableListPagination = {
-    total: number;
-    pageSize: number;
-    current: number;
-  };
-
   export type TableListParams = {
     status?: string;
     name?: string;
@@ -38,5 +32,4 @@ declare namespace request {
     filter?: Record<string, any[]>;
     sorter?: Record<string, any>;
   };
-
 }

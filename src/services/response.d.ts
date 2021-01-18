@@ -4,6 +4,12 @@ declare namespace response {
     message?: string;
   }
 
+  export type Pagination = {
+    total: number;
+    pageSize: number;
+    current: number;
+  };
+
   export type CurrentUser = {
     avatar?: string;
     name?: string;
@@ -38,7 +44,7 @@ declare namespace response {
   };
 
   export type TableListData = {
-    list: TableListItem[];
-    pagination: Partial<TableListPagination>;
+    list: request.TableListItem[];
+    pagination: Partial<Pagination>;
   };
 }

@@ -90,27 +90,6 @@ export default {
       }
     });
   },
-  // 获取用户列表
-  'POST /api/users': [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-  ],
   // 登录
   'POST /api/login': async (req: Request, res: Response) => {
     const {username} = req.body;
