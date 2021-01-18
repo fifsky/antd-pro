@@ -9,7 +9,6 @@ import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';
 import type { FormValueType } from './components/UpdateForm';
 import UpdateForm from './components/UpdateForm';
-import type { TableListItem } from '../../services/data';
 import { queryRuleApi, updateRuleApi, addRuleApi, removeRuleApi } from '@/services/api';
 import useAsync from "@/hooks/async";
 
@@ -22,10 +21,10 @@ const TableList: React.FC = () => {
   const [showDetail, setShowDetail] = useState<boolean>(false);
 
   const actionRef = useRef<ActionType>();
-  const [currentRow, setCurrentRow] = useState<TableListItem>();
-  const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
+  const [currentRow, setCurrentRow] = useState<request.TableListItem>();
+  const [selectedRowsState, setSelectedRows] = useState<request.TableListItem[]>([]);
 
-  const columns: ProColumns<TableListItem>[] = [
+  const columns: ProColumns<request.TableListItem>[] = [
     {
       title: "规则名称",
       dataIndex: 'name',
@@ -134,7 +133,7 @@ const TableList: React.FC = () => {
    * 添加节点
    * @param fields
    */
-  const [handleAdd] = useAsync(async (fields: TableListItem) => {
+  const [handleAdd] = useAsync(async (fields: request.TableListItem) => {
     try {
       await addRuleApi({ ...fields });
       if (actionRef.current) {
@@ -177,7 +176,7 @@ const TableList: React.FC = () => {
    *  删除节点
    * @param selectedRows
    */
-  const [handleRemove] = useAsync(async (selectedRows: TableListItem[]) => {
+  const [handleRemove] = useAsync(async (selectedRows: request.TableListItem[]) => {
     const ret: boolean = await (async ()=>{
       if (!selectedRows) return true;
       try {
@@ -292,7 +291,7 @@ const TableList: React.FC = () => {
         closable={false}
       >
         {currentRow?.name && (
-          <ProDescriptions<TableListItem>
+          <ProDescriptions<request.TableListItem>
             column={2}
             title={currentRow?.name}
             request={async () => ({
@@ -301,7 +300,7 @@ const TableList: React.FC = () => {
             params={{
               id: currentRow?.name,
             }}
-            columns={columns as ProDescriptionsItemProps<TableListItem>[]}
+            columns={columns as ProDescriptionsItemProps<request.TableListItem>[]}
           />
         )}
       </Drawer>

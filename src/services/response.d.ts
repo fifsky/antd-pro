@@ -36,4 +36,9 @@ declare namespace response {
     extra: any;
     status: string;
   };
+
+  export type TableListData = {
+    list: TableListItem[];
+    pagination: Partial<TableListPagination>;
+  };
 }

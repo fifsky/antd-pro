@@ -1,8 +1,7 @@
-import {request} from 'umi';
-import {TableListItem, TableListParams} from "@/services/data";
+import {request as umiRequest} from 'umi';
 
-const createApi = async (path: string, data: any = {}, method: string = 'POST') => {
-  const ret = await request(path, {
+async function createApi<T>(path: string, data: any = {}, method: string = 'POST'): Promise<T> {
+  const ret = await umiRequest(path, {
     method,
     data,
   });
@@ -18,7 +17,7 @@ export const outLoginApi = () => createApi('/api/logout')
 export const queryUserApi = () => createApi('/api/users')
 export const currentUserApi = () => createApi('/api/user/current')
 export const queryNoticesApi = () => createApi('/api/notices')
-export const queryRuleApi = (params?: TableListParams) => createApi('/api/rule',params)
+export const queryRuleApi = (params?: request.TableListParams) => createApi<response.TableListData>('/api/rule',params)
 export const removeRuleApi = (params: { key: number[] }) => createApi('/api/rule',params)
-export const addRuleApi = (params: TableListItem) => createApi('/api/rule',params)
-export const updateRuleApi = (params: TableListParams) => createApi('/api/rule',params)
+export const addRuleApi = (params: request.TableListItem) => createApi('/api/rule',params)
+export const updateRuleApi = (params: request.TableListParams) => createApi('/api/rule',params)
